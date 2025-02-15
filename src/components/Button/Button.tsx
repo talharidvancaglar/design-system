@@ -1,3 +1,4 @@
+import React from "react";
 import { IButtonProps } from "./Button.types";
 import styles from "./Button.module.scss";
 

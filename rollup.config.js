@@ -7,7 +7,7 @@ import peerDeps from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 
 const getFiles = require("./scripts/utils");
-// const packageJson = require("./package.json");
+const packageJson = require("./package.json");
 const extensions = [".js", ".ts", ".jsx", ".tsx", ".css", ".scss"];
 const excludeExtensions = [
   "test.js",
@@ -22,14 +22,26 @@ const excludeExtensions = [
 
 export default [
   {
+    // input: ["src/index.ts", ...getFiles("./src/components", extensions, excludeExtensions)],
     input: ["src/index.ts", ...getFiles("./src/components", extensions, excludeExtensions)],
     output: [
       {
-        dir: "dist",
+        // dir: packageJson.main,
+        dir: "dist/cjs",
+        format: "cjs",
+        preserveModules: true,
+        preserveModulesRoot: "src",
+        sourcemap: true,
+        exports: "named",
+      },
+      {
+        // dir: packageJson.module,
+        dir: "dist/esm",
         format: "esm",
         preserveModules: true,
         preserveModulesRoot: "src",
         sourcemap: true,
+        exports: "named",
       },
     ],
     plugins: [
@@ -42,21 +54,15 @@ export default [
       postcss({
         use: ["sass"],
         modules: true,
-        namedExports: true,
-        camelCase: true,
-        minimize: true,
-        sourceMap: true,
-        sourceMapInlineSources: true,
-        sourceMapInlineSourcesRoot: "src",
         extract: true,
       }),
       terser(),
     ],
-    external: ["react", "react-dom"],
+    external: ["react", "react-dom", "react/jsx-runtime"],
   },
-  // {
-  //   input: "src/index.ts",
-  //   output: [{ file: "dist/types.d.ts", format: "es" }],
-  //   plugins: [dts.default()],
-  // },
+  {
+    input: "src/index.ts",
+    output: [{ file: "dist/types.d.ts", format: "es", sourcemap: true, exports: "named" }],
+    plugins: [dts.default()],
+  },
 ];

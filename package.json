@@ -1,17 +1,39 @@
 {
   "name": "@talhacaglar/design-system",
-  "version": "0.0.1",
+  "version": "0.0.15",
   "description": "A design system for React",
-  "main": "./dist/cjs/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types.d.ts"
+    },
+    "./components/button": {
+      "import": "./dist/esm/components/Button/index.js",
+      "require": "./dist/cjs/components/Button/index.js",
+      "types": "./dist/types.d.ts"
+    },
+    "./components/icon": {
+      "import": "./dist/esm/components/Icon/index.js",
+      "require": "./dist/cjs/components/Icon/index.js",
+      "types": "./dist/types.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "npm run clean && npm run rollup",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "clean": "rimraf dist",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,scss}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,scss}\"",
     "tsc": "tsc",
-    "rollup": "rollup -c --bundleConfigAsCjs",
-    "build": "npm run rollup",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "rollup": "rimraf dist && rollup -c --bundleConfigAsCjs"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
@@ -30,6 +52,7 @@
     "eslint-plugin-prettier": "^5.2.3",
     "prettier": "^3.5.1",
     "react": "^19.0.0",
+    "rimraf": "^6.0.1",
     "rollup": "^4.34.7",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -39,5 +62,9 @@
     "storybook": "^8.5.6",
     "tslib": "^2.8.1",
     "typescript": "^5.7.3"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   }
 }

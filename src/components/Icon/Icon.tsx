@@ -1,3 +1,4 @@
+import React from "react";
 import { IIconProps } from "./Icon.types";
 import styles from "./Icon.module.scss";
 
