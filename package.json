@@ -1,6 +1,7 @@
 {
-  "name": "design-system",
+  "name": "@talhacaglar/design-system",
   "version": "0.0.1",
+  "description": "A design system for React",
   "main": "./dist/cjs/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
