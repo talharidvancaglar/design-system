@@ -1,4 +1,6 @@
 {
+  "name": "design-system",
+  "version": "0.0.1",
   "main": "./dist/cjs/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -10,7 +12,6 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
     "@rollup/plugin-commonjs": "^28.0.2",
