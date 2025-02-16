@@ -3,7 +3,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
 import dts from "rollup-plugin-dts";
 import terser from "@rollup/plugin-terser";
-import peerDeps from "rollup-plugin-peer-deps-external";
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
 
 const getFiles = require("./scripts/utils");
@@ -31,7 +31,6 @@ export default [
         format: "cjs",
         preserveModules: true,
         preserveModulesRoot: "src",
-        sourcemap: true,
         exports: "named",
       },
       {
@@ -40,29 +39,30 @@ export default [
         format: "esm",
         preserveModules: true,
         preserveModulesRoot: "src",
-        sourcemap: true,
         exports: "named",
       },
     ],
     plugins: [
-      peerDeps(),
+      peerDepsExternal(),
       resolve(),
       commonjs(),
       typescript({
         tsconfig: "./tsconfig.json",
       }),
-      postcss({
-        use: ["sass"],
-        modules: true,
-        extract: true,
-      }),
       terser(),
+      postcss({
+        extract: true,
+        inject: false,
+        modules: true,
+        autoModules: true,
+        minimize: true,
+      }),
     ],
-    external: ["react", "react-dom", "react/jsx-runtime"],
+    external: ["react", "react-dom"],
   },
   {
     input: "src/index.ts",
-    output: [{ file: "dist/types.d.ts", format: "es", sourcemap: true, exports: "named" }],
+    output: [{ file: "dist/types.d.ts", format: "es", sourcemap: false, exports: "named" }],
     plugins: [dts.default()],
   },
 ];

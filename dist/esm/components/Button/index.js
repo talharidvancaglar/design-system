@@ -1,2 +1,1 @@
-export{default}from"./Button.js";
-//# sourceMappingURL=index.js.map
+export{Button}from"./Button.js";

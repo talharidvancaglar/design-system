@@ -1,25 +1,29 @@
 {
   "name": "@talhacaglar/design-system",
-  "version": "0.0.15",
+  "version": "0.0.26",
   "description": "A design system for React",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/types.d.ts",
       "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js",
-      "types": "./dist/types.d.ts"
+      "require": "./dist/cjs/index.js"
     },
-    "./components/button": {
+    "./button": {
+      "types": "./dist/cjs/components/Button/index.d.ts",
       "import": "./dist/esm/components/Button/index.js",
-      "require": "./dist/cjs/components/Button/index.js",
-      "types": "./dist/types.d.ts"
+      "require": "./dist/cjs/components/Button/index.js"
     },
-    "./components/icon": {
+    "./icon": {
+      "types": "./dist/cjs/components/Icon/index.d.ts",
       "import": "./dist/esm/components/Icon/index.js",
-      "require": "./dist/cjs/components/Icon/index.js",
-      "types": "./dist/types.d.ts"
+      "require": "./dist/cjs/components/Icon/index.js"
+    },
+    "./css/index.css": {
+      "import": "./dist/esm/index.css",
+      "require": "./dist/cjs/index.css"
     }
   },
   "files": [
@@ -44,24 +48,29 @@
     "@storybook/addon-interactions": "^8.5.6",
     "@storybook/addon-onboarding": "^8.5.6",
     "@storybook/blocks": "^8.5.6",
+    "@storybook/builder-vite": "8.5.6",
     "@storybook/react": "^8.5.6",
     "@storybook/react-vite": "^8.5.6",
     "@storybook/test": "^8.5.6",
     "@types/react": "^19.0.8",
+    "@vitejs/plugin-react": "4.3.4",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
+    "postcss": "8.5.2",
+    "postcss-modules": "6.0.1",
     "prettier": "^3.5.1",
     "react": "^19.0.0",
     "rimraf": "^6.0.1",
     "rollup": "^4.34.7",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-postcss": "4.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
-    "sass": "^1.85.0",
+    "sass": "1.85.0",
     "storybook": "^8.5.6",
     "tslib": "^2.8.1",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vite": "6.1.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

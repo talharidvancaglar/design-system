@@ -1,2 +1,1 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var e=require("react/jsx-runtime"),r=require("./Icon.module.scss.js"),s=function(s){return s.name,s.className,e.jsx("div",{className:r.default.icon,children:"Icon"})};exports.Icon=s,exports.default=s;
-//# sourceMappingURL=Icon.js.map
+"use strict";var e=require("react/jsx-runtime"),s=require("./Icon.module.scss.js");exports.Icon=function(r){return r.name,r.className,e.jsx("div",{className:s.default.icon,children:"Icon"})};

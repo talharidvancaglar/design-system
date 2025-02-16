@@ -1,13 +1,13 @@
 import React from "react";
 import { IButtonProps } from "./Button.types";
-import styles from "./Button.module.scss";
+import style from "./Button.module.scss";
 
 const Button: React.FC<IButtonProps> = (props) => {
   return (
-    <button {...props} className={styles.button}>
+    <button {...props} className={style.button}>
       Click me
     </button>
   );
 };
 
-export default Button;
+export { Button };

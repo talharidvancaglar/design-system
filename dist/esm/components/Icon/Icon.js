@@ -1,2 +1,1 @@
-import{jsx as r}from"react/jsx-runtime";import e from"./Icon.module.scss.js";var o=function(o){return o.name,o.className,r("div",{className:e.icon,children:"Icon"})};export{o as Icon,o as default};
-//# sourceMappingURL=Icon.js.map
+import{jsx as r}from"react/jsx-runtime";import o from"./Icon.module.scss.js";var c=function(c){return c.name,c.className,r("div",{className:o.icon,children:"Icon"})};export{c as Icon};

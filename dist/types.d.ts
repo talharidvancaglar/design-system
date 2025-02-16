@@ -22,4 +22,3 @@ interface IIconProps {
 declare const Icon: React$1.FC<IIconProps>;
 
 export { Button, type IButtonProps, type IIconProps, Icon };
-//# sourceMappingURL=types.d.ts.map
